@@ -1,0 +1,13 @@
+{% extends 'base.html' %} {% block content %}
+<!-- 
+    form.as_p: print them vertically,
+    form.as_table: as table (default) ,
+    form.as_ul: as unorganized list.
+
+    {% csrf_token %}: For security reasons
+-->
+<form action="" method="POST">
+  {% csrf_token %} {{form.as_table}}
+  <button type="submit" name="save">Add Task</button>
+</form>
+{% endblock %}

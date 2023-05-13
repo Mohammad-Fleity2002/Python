@@ -1,9 +1,7 @@
 from django.http import HttpResponse, Http404
 from django.shortcuts import render, get_object_or_404, redirect
 from .models import Passwords
-from django.contrib import messages
-from django.db.models import Q
-from .forms import *
+from .forms import Add_Password
 # Create your views here.
 
 
@@ -12,16 +10,25 @@ def index(request):
     return render(request, 'Password_Storage/index.html', {'passwords': passwords})
 
 
-def Add_Password(request):
-    # Use the AddPass form from forms.py
-    form = AddPass(request.POST or None)
-    # check if valid if so create a Password otherwise raise an exeption
-    if form.is_valid():
-        username = form.cleaned_data.get("username")
-        password = form.cleaned_data.get("user-password")
-        desc = form.cleaned_data.get("desc")
-        try:
-            new_Password = Passwords.objects.create(username, password, desc)
-        except:
-            new_Password = None
-    return render(request, "Password_Storage/Add_Password.html", {"form": form})
+def AddPassword(request):
+    # if this is a POST request we need to process the form data
+    if request.method == "POST":
+        # create a form instance and populate it with data from the request:
+        myform = Add_Password(request.POST)
+        # check whether it's valid:
+        if myform.is_valid():
+            # process the data in form.cleaned_data as required
+            # redirect to a new URL:
+            userName = myform.cleaned_data["userName"]
+            Pass = myform.cleaned_data["userPass"]
+            userdesc = myform.cleaned_data["desc"]
+            newPass = Passwords(username=userName,
+                                password=Pass, description=userdesc)
+            newPass.save()
+            return index(request=None)
+
+    # if a GET (or any other method) we'll create a blank form
+    else:
+        myform = Add_Password()
+
+    return render(request, "Password_Storage/Add_Password.html", {"form": myform})

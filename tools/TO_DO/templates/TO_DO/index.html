@@ -7,13 +7,14 @@
           <div class="col col-xl-10">
             <div class="card">
               <div class="card-body p-5">
-                <form>
-                    <div class="mb-4 input-group">
-                      <input type="name" id="name" class="form-control" placeholder="New task...">
-                      <button type="submit" class="btn btn-info ms-2">Add</button>
-                    </div>
-                </form>
-                <div class="tab-content" id="ex1-content">
+                <div class="tab-content " id="ex1-content">
+                  <form action="" method="POST" class="d-flex justify-content-center align-items-center mb-4">
+                    <div class="form-outline flex-fill">
+                      {% csrf_token %} {{form.as_p}}
+                    </div>      
+                    <button class="btn btn-info mb-3 ms-2" type="submit" name="save">Add Task</button>
+                  </form>
+                  <h6 class="text-info" >Your tasks today:</h6>
                   <div
                     class="tab-pane fade show active"
                     id="ex1-tabs-1"
