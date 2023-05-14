@@ -8,3 +8,4 @@ class Add_Password(forms.Form):
         attrs={'class': 'form-control text-dark', 'type': 'password'}))
     desc = forms.CharField(label="Description", max_length=100,
                            widget=forms.TextInput(attrs={'class': 'form-control text-dark'}))
+

@@ -21,22 +21,44 @@
                     role="tabpanel"
                     aria-labelledby="ex1-tab-1"
                   >
-                  <ul class="list-group mb-0">
-                      {% for t in tasks %}
-                      {% if t.cheked %}
-                      <li class="list-group-item d-flex text-decoration-line-through align-items-center border-0 mb-2 rounded"
-                      style="background-color: #f4f6f7"
-                      >
-                      {% else %}
-                      <li
-                      class="list-group-item d-flex align-items-center border-0 mb-2 rounded"
-                      style="background-color: #f4f6f7"
-                      >
-                      {% endif %}
-                      {{t.title}}
-                    </li>
-                    {% endfor %}
-                  </ul>
+                  {% if tasks %}
+                    <ul class="list-group mb-0">
+                        {% for t in tasks %}
+                        <span class="d-block border border-1 border-secodary p-1">
+                          {% if t.cheked %}
+                            <li class="list-group-item text-decoration-line-through align-items-center border-0 mb-2 rounded"
+                            style="background-color: #f4f6f7"
+                            >
+                          {% else %}
+                            <li
+                            class="list-group-item d-block align-items-center border-0 mb-2 rounded"
+                            style="background-color: #f4f6f7"
+                            >
+                          {% endif %}
+                            {{t.title}}
+                          </li>
+                        <form action="deletTask/{{t.id}}" method="POST"  class=" d-inline-block ">
+                          {% csrf_token %}
+                          <button value="remove" type="submit" class="btn btn-danger"> remove </button>
+                        </form>
+                        <form action="checkTask/{{t.id}}" method="POST"  class=" d-inline-block ">
+                          {% csrf_token %}
+                          <button value="check" type="submit" class="btn btn-success"> check </button>
+                        </form>
+                      </span>
+                      {% endfor %}
+                    </ul>
+                  {% else %}
+                    <p>No tasks today</p>
+                  {% endif %}
+                  <p class="text-center">
+                    <a href="{% url 'TO_DO:allTask' %}">
+                      <button class="btn btn-info p-2 m-1 align-center" type="button">
+                        All Tasks
+                      </button>
+                    </a>
+                  </p>
+            
                 </div>
               </div>
             </div>
