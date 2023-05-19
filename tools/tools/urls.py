@@ -17,11 +17,13 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path, include
 from . import views
-
+app_name = 'home'
 urlpatterns = [
-    path('', views.home),
+    path('', include('Authentication.urls')),
+    path('<int:user_id>/', views.home),
     path('text_to_HTML/', include('text_to_HTML.urls')),
     path('TO_DO/', include('TO_DO.urls')),
+    path('Weather/', include('Weather_App.urls')),
     path('Password_Storage/', include('Password_Storage.urls')),
     path('admin/', admin.site.urls)
 

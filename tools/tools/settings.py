@@ -33,6 +33,8 @@ ALLOWED_HOSTS = []
 
 INSTALLED_APPS = [
     'text_to_HTML.apps.TextToHtmlConfig',
+    'Authentication.apps.AuthenticationConfig',
+    'Weather_App.apps.WeatherAppConfig',
     'Password_Storage.apps.PasswordStorageConfig',
     'django.contrib.admin',
     'django.contrib.auth',
@@ -42,7 +44,6 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'TO_DO.apps.ToDoConfig',
     'ckeditor',
-
 ]
 
 MIDDLEWARE = [

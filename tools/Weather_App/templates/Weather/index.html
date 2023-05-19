@@ -1,0 +1,81 @@
+{% extends 'base.html' %}{% block content %}
+
+<body class="bg-secondary">
+  <section class="section">
+    <div class="container">
+      <div class="columns">
+        <div class="column is-offset-4 is-4">
+          <div class="field has-addons">
+            <div class="text-center control is-expanded p-5">
+              <form action="." method="POST">
+                {% csrf_token %}
+                <div class="input-group">
+                  <input
+                    type="text"
+                    required
+                    class="form-control rounded-1"
+                    name="city"
+                    placeholder="Search City......."
+                  />
+                  <div class="input-group-append">
+                    <button class="btn btn-primary ms-1" type="submit">
+                      Search
+                    </button>
+                  </div>
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <section class="gradient-custom">
+    <div class="container py-5 h-100">
+      <div class="row d-flex justify-content-center align-items-center h-100">
+        <div class="col col-xl-10">
+          <div class="card">
+            <div class="card-body p-5">
+              <div class="tab-content" id="ex1-content">
+                <div class="media-left">
+                  {% if weather %}
+                  <figure class="image is-50x50 border bg-secondary border-secondary border-2 rounded-2 bg-opacity-25 d-inline py-3 px-2">
+                    <img
+                    class="text-white"
+                    src="http://openweathermap.org/img/w/{{weather.icon}}.png"
+                    alt="image"
+                    />
+                  </figure>
+                </div>
+                <div class="media-content">
+                  <p>
+                    <h6 class="title d-block">{{ weather.city }}</h6>
+                    <h6 class="subtitle d-block"
+                    >{{ weather.time }}</h6
+                    >
+                    <h6 class="subtitle d-block"
+                    >{{ weather.temperature }}</h6
+                    >
+                    <h6 class="d-block"
+                    >{{ weather.description }}</h6
+                    >
+                  </p>
+                </div>
+                {% else %}
+                <h6 class="text-black d-inline">Choose A city</h6>
+                {% endif %}
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <footer class="footer"></footer>
+
+  {% endblock %}
+</body>
+{% comment %}
+https://api.openweathermap.org/data/2.5/weather?q={city_name}&appid={API_KEY}&units=metric
+https://api.openweathermap.org/data/2.5/weather?q=Beirut&appid=9efc3f271bab9875a0355227ab9d231b&units=metric
+{% endcomment %}
