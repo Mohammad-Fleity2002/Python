@@ -25,6 +25,7 @@ urlpatterns = [
     path('TO_DO/', include('TO_DO.urls')),
     path('Weather/', include('Weather_App.urls')),
     path('Password_Storage/', include('Password_Storage.urls')),
+    path('My_Contact/', include('My_Contact.urls')),
     path('admin/', admin.site.urls)
 
 ]

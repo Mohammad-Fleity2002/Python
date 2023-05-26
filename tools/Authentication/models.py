@@ -1,9 +1,6 @@
 from django.db import models
 from django.utils import timezone
 
-# Create your models here.
-
-
 class Users(models.Model):
     user_name = models.CharField(max_length=255)
     user_password = models.CharField(max_length=255)

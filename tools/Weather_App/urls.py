@@ -4,5 +4,4 @@ app_name = 'Weather'
 
 urlpatterns = [
     path('', views.index, name="index"),
-    # path('Errors/', views.index, name="index"),
 ]

@@ -2,13 +2,9 @@ from django.shortcuts import render, redirect
 from .models import task
 from .forms import AddTask
 from datetime import datetime
-# from django.utils import timezone
-
-# Create your views here.
 
 
 def index(request):
-    # Entry.objects.all().filter(pub_date__year=2006)
     tasks = task.objects.all().filter(add_date=datetime.today())
     if request.method == "POST":
         form = AddTask(request.POST)

@@ -35,6 +35,7 @@ INSTALLED_APPS = [
     'text_to_HTML.apps.TextToHtmlConfig',
     'Authentication.apps.AuthenticationConfig',
     'Weather_App.apps.WeatherAppConfig',
+    'My_Contact.apps.MyContactConfig',
     'Password_Storage.apps.PasswordStorageConfig',
     'django.contrib.admin',
     'django.contrib.auth',

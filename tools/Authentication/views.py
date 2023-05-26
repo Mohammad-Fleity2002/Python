@@ -1,8 +1,6 @@
-from django.http import HttpResponse, Http404, HttpResponseRedirect
-from django.shortcuts import render, get_object_or_404, redirect
+from django.shortcuts import render, redirect
 from .forms import login_form, register_forms
 from .models import Users
-# Create your views here.
 
 
 def login(request):
@@ -31,9 +29,9 @@ def register(request):
             Pass = myform.cleaned_data["userPass"]
             confPass = myform.cleaned_data["confPass"]
             if Pass == confPass:
+                # teting if it's a new email
                 try:
                     is_new = Users.objects.get(user_email=email)
-                    # if is_new:#no need try except is enough
                     message = "Email already exist"
                     return render(request, 'Authentication/Error.html', {'message': message})
                 except Exception:
@@ -44,8 +42,6 @@ def register(request):
             else:
                 message = "Password doesn't matches"
                 return render(request, 'Authentication/Error.html', {'message': message})
-            # return index(request=None)
     else:
         myform = register_forms()
     return render(request, "Authentication/register.html", {"form": myform})
-    # return render(request, "/Login.html")

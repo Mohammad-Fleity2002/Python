@@ -24,11 +24,6 @@
                 {% csrf_token %}{{form.as_p}}
                 <button value="remove" type="submit" class="btn btn-danger"> remove </button>
               </form>
-              {% comment %} <a href="{% url 'Password_Storage:editPassword' pass.id %}">
-                <button class="btn btn-success p-1 m-0 align-center" type="button">
-                  Edit Password
-                </button>
-              </a> {% endcomment %}
             </td>
           </tr>
           {% endfor %}
@@ -45,41 +40,3 @@
   </body>
   </html>
   {% endblock  %}
-  {% comment %} 
-  {% extends 'base.html' %} {% block content %}
-<body class="bg-dark">
-  <div class="container">
-    <table class="table text-white">
-      <thead>
-        <tr>
-          <th>Old Username</th>
-          <th>Old Password</th>
-          <th>Old Description</th>
-          <th> Add Date</th>
-          <th></th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr>
-          <td>{{password.username}}</td>
-          <td>{{password.password}}</td>
-          <td>{{password.description}}</td>
-          <td>{{password.create_Date}}</td>
-        </tr>
-      </tbody>
-    </table>
-  </div>
-  <form
-    action=""
-    method="POST"
-    class="d-flex justify-content-center align-items-center mb-4"
-  >
-    <div class="form-outline flex-fill">{% csrf_token %} {{form.as_p}}</div>
-    <button class="btn btn-info mb-3 ms-2" type="submit" name="save">
-      Save Changes
-    </button>
-  </form>
-  {% endblock %}
-</body>
- 
-  {% endcomment %}

@@ -1,8 +1,6 @@
-from django.http import HttpResponse, Http404, HttpResponseRedirect
-from django.shortcuts import render, get_object_or_404, redirect
+from django.shortcuts import render, redirect
 from .models import Passwords
 from .forms import Add_Password
-# Create your views here.
 
 
 def index(request):
@@ -21,7 +19,6 @@ def AddPassword(request):
                                 password=Pass, description=userdesc)
             newPass.save()
             return redirect('/Password_Storage/')
-            # return index(request=None)
     else:
         myform = Add_Password()
     return render(request, "Password_Storage/Add_Password.html", {"form": myform})
@@ -30,5 +27,4 @@ def AddPassword(request):
 def deletePassword(request, item_id):
     item = Passwords.objects.get(id=item_id)
     item.delete()
-    # return index(request=None)
     return redirect(request.META.get('HTTP_REFERER'))
