@@ -1,6 +1,0 @@
-{% extends 'base.html' %} {% block content %}
-<form action="" method="POST">
-  {% csrf_token %} {{form.as_table}}
-  <button type="submit" name="save">Add Task</button>
-</form>
-{% endblock %}

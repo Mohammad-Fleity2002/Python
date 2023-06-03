@@ -45,6 +45,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'TO_DO.apps.ToDoConfig',
     'ckeditor',
+    'Authentications'
 ]
 
 MIDDLEWARE = [

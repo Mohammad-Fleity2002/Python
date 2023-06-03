@@ -19,8 +19,9 @@ from django.urls import path, include
 from . import views
 app_name = 'home'
 urlpatterns = [
-    path('', include('Authentication.urls')),
-    path('<int:user_id>/', views.home),
+    path('', include('django.contrib.auth.urls')),
+    path('', include('Authentications.urls')),
+    path('home/', views.home),
     path('text_to_HTML/', include('text_to_HTML.urls')),
     path('TO_DO/', include('TO_DO.urls')),
     path('Weather/', include('Weather_App.urls')),
