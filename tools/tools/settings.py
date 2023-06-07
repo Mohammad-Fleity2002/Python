@@ -9,6 +9,8 @@ https://docs.djangoproject.com/en/4.2/topics/settings/
 For the full list of settings and their values, see
 https://docs.djangoproject.com/en/4.2/ref/settings/
 """
+#
+# AUTH_USER_MODEL='core.users' #this command set the default model to our created model
 
 from pathlib import Path
 import os
@@ -44,7 +46,8 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'TO_DO.apps.ToDoConfig',
     'ckeditor',
-    'Authentications'
+    'Authentications',
+    'phonenumber_field'
 ]
 
 MIDDLEWARE = [
@@ -58,7 +61,7 @@ MIDDLEWARE = [
 ]
 
 ROOT_URLCONF = 'tools.urls'
-
+LOGIN_REDIRECT_URL = '/'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',

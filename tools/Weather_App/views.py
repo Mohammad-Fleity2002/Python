@@ -1,5 +1,7 @@
 from django.shortcuts import render
 import requests
+from django.contrib import messages
+
 import json
 from datetime import datetime
 # Create your views here.
@@ -29,4 +31,5 @@ def index(request):
         context = {'weather': city_weather_update}
         return render(request, 'Weather/index.html', context)
     except:
-        return render(request, 'Weather/Errors.html')
+        messages.success(request, ("Unrecognized City"))
+        return render(request, 'Weather/index.html')
