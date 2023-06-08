@@ -1,12 +1,11 @@
 from django.shortcuts import render
 import requests
 from django.contrib import messages
-
-import json
 from datetime import datetime
-# Create your views here.
+from django.contrib.auth.decorators import login_required
 
 
+@login_required(login_url="/")
 def index(request):
     try:
         if request.method == 'POST':

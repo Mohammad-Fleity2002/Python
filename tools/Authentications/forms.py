@@ -12,20 +12,25 @@ class LoginForm(forms.Form):
 
 
 class signForm(UserCreationForm):
-    email = forms.EmailField(label="Email:", max_length=200, widget=forms.EmailInput(
-        attrs={'class': 'form-control text-dark'})
-    )
-    firstName = forms.CharField(label="First Name:", max_length=100, widget=forms.TextInput(
-        attrs={'class': 'form-control text-dark'})
-    )
-    lastName = forms.CharField(label="Last Name:", max_length=100, widget=forms.TextInput(
-        attrs={'class': 'form-control text-dark'})
-    )
-
+    # email = forms.EmailField(label="Email:", max_length=200, widget=forms.EmailInput(
+    #     attrs={'class': 'form-control text-dark'})
+    # )
+    # firstName = forms.CharField(label="First Name:", max_length=100, widget=forms.TextInput(
+    #     attrs={'class': 'form-control text-dark'})
+    # )
+    # lastName = forms.CharField(label="Last Name:", max_length=100, widget=forms.TextInput(
+    #     attrs={'class': 'form-control text-dark'})
+    # )
     class Meta:
         model = User
-        fields = ('username', 'firstName', 'lastName',
+        fields = ('username', 'first_name', 'last_name',
                   'email', 'password1', 'password2')
+
+        def save(self, commit=True):
+            User = super.save(commit=False)
+            if commit:
+                User.save()
+            return User
     # redesignind default inputs of django
 
     def __init__(self, *args: Any, **kwargs: Any) -> None:
@@ -34,3 +39,6 @@ class signForm(UserCreationForm):
         self.fields['username'].label = 'User Name'
         self.fields['password1'].widget.attrs['class'] = 'form-control'
         self.fields['password2'].widget.attrs['class'] = 'form-control'
+        self.fields['first_name'].widget.attrs['class'] = 'form-control'
+        self.fields['last_name'].widget.attrs['class'] = 'form-control'
+        self.fields['email'].widget.attrs['class'] = 'form-control'

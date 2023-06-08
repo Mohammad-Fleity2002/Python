@@ -49,7 +49,9 @@ INSTALLED_APPS = [
     'Authentications',
     'phonenumber_field'
 ]
-
+# MIDDLEWARE_CLASSES = (
+#     "custom_middleware.CustomMiddleware",
+# )
 MIDDLEWARE = [
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.security.SecurityMiddleware',
@@ -58,6 +60,7 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    # 'tools.custom_middleware.CustomMiddleware',
 ]
 
 ROOT_URLCONF = 'tools.urls'
@@ -131,3 +134,5 @@ STATIC_URL = 'static/'
 # https://docs.djangoproject.com/en/4.2/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+SESSION_COOKIE_AGE = 3600  # 1 hour
+SESSION_EXPIRE_AT_BROWSER_CLOSE = True
