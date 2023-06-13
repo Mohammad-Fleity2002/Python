@@ -15,12 +15,7 @@ def AddPassword(request):
     if request.method == "POST":
         myform = Add_Password(request.POST)
         if myform.is_valid():
-            userName = myform.cleaned_data["userName"]
-            Pass = myform.cleaned_data["userPass"]
-            userdesc = myform.cleaned_data["desc"]
-            newPass = Passwords(username=userName,
-                                password=Pass, description=userdesc)
-            newPass.save()
+            myform.save()
             return redirect('/Password_Storage/')
     else:
         myform = Add_Password()
