@@ -15,7 +15,7 @@
               {% csrf_token %} {{form.as_p}}
               <div class="text-center pt-1 mb-5 pb-1">
                 <input
-                  class="btn btn-primary btn-block fa-lg gradient-custom-2 mb-3"
+                  class="btn btn-secondary btn-block fa-lg gradient-custom-2 mb-3"
                   type="submit"
                   value="Create Account"
                 />
@@ -26,7 +26,7 @@
               >
                 <p class="mb-0 me-2">Already have an account?</p>
                 <a
-                  class="btn btn-outline-primary text-decoration-none"
+                  class="btn btn-outline-secondary text-decoration-none"
                   href="{% url 'Authentications:login' %}"
                 >
                   Login

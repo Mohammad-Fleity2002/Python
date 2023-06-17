@@ -22,9 +22,9 @@ from . import views
 app_name = 'home'
 handler404 = views.handler404
 urlpatterns = [
-    path('', include('django.contrib.auth.urls')),
-    path('', include('Authentications.urls')),
-    path('home/', views.home, name='home'),
+    path('login/', include('django.contrib.auth.urls')),
+    path('login/', include('Authentications.urls')),
+    path('', views.home, name='home'),
     path('text_to_HTML/', include('text_to_HTML.urls')),
     path('TO_DO/', include('TO_DO.urls')),
     path('Weather/', include('Weather_App.urls')),

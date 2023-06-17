@@ -5,7 +5,7 @@ from datetime import datetime
 from django.contrib.auth.decorators import login_required
 
 
-@login_required(login_url="/")
+# @login_required(login_url="/")
 def index(request):
     try:
         if request.method == 'POST':

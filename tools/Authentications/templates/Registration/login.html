@@ -1,7 +1,7 @@
 {% extends 'base.html' %} {% block content %}
 <body class="p-5 gradient-form gradient-custom-2">
   <div class="row d-flex justify-content-center align-items-center">
-    <div class="col-xl-6">
+    <div class="col-xl-5">
       <div class="card rounded-3 text-black">
         <div class="row g-0">
           <div class="card-body p-md-5 mx-md-4">
@@ -16,9 +16,9 @@
             <form action="" method="POST">
               {% csrf_token %}{{form.as_p}}
 
-              <div class="text-center pt-1 mb-5 pb-1">
+              <div class="text-center pt-1 pb-1">
                 <input
-                  class="btn btn-primary btn-block fa-lg gradient-custom-2 mb-3"
+                  class="btn btn-secondary btn-block fa-lg gradient-custom-2 mb-3"
                   type="submit"
                   value="Login"
                 />
@@ -28,10 +28,20 @@
               >
                 <p class="mb-0 me-2">Don't have an account?</p>
                 <a
-                  class="btn btn-outline-primary text-decoration-none"
+                  class="btn btn-outline-secondary text-decoration-none"
                   href="{% url 'Authentications:sign_up' %}"
                 >
                   Create new
+                </a>
+              </div>
+              <div
+                class="d-flex align-items-center justify-content-center p-0 m-0"
+              >
+                <a
+                  class="text-bleue text-decoration-none"
+                  href="{% url 'Authentications:change_pass' %}"
+                >
+                  Forgot Password
                 </a>
               </div>
             </form>
